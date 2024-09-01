@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise Gift for Rajalekshmi</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffe6e6;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        .gift-container {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+        .gift-box {
+            width: 100%;
+            height: 100%;
+            background-color: #ff4d4d;
+            border-radius: 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .gift-lid {
+            width: 100%;
+            height: 60px;
+            background-color: #cc0000;
+            border-radius: 10px;
+            position: absolute;
+            top: -70px;
+            left: 0;
+            transition: top 0.5s ease;
+        }
+        .ribbon {
+            width: 20px;
+            height: 250px;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+        .open-btn, .message-btn {
+            margin-top: 280px;
+            padding: 10px 20px;
+            background-color: #ff4d4d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            display: block;
+            text-align: center;
+            width: 200px;
+        }
+        .message-btn:hover, .open-btn:hover {
+            background-color: #cc0000;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .gift-container.open .gift-lid {
+            top: -140px;
+        }
+        .message-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .message-overlay p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .close-btn {
+            padding: 10px 20px;
+            background-color: #ff4d4d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .close-btn:hover {
+            background-color: #cc0000;
+        }
+        .container {
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(3, 1fr);
+            grid-gap: 10px;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container::before {
+            content: "Happy Birthday, Rajalekshmi!";
+            font-size: 18px;
+            color: #ff4d4d;
+            font-weight: bold;
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .photo {
+            background-color: #ff8080;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .photo1 { grid-area: 2 / 1 / 3 / 2; }
+        .photo2 { grid-area: 2 / 2 / 3 / 3; }
+        .photo3 { grid-area: 1 / 1 / 2 / 2; }
+        .photo4 { grid-area: 3 / 1 / 4 / 2; }
+        .photo5 { grid-area: 1 / 2 / 2 / 3; }
+        .rose {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            bottom: -30px;
+        }
+        .rose-left {
+            left: 10px;
+        }
+        .rose-right {
+            right: 10px;
+        }
+        .song {
+            grid-area: 3 / 2 / 4 / 3;
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+        }
+        audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+        @media only screen and (max-width: 480px) {
+            .container {
+                grid-template-columns: 1fr;
+                max-width: 300px;
+            }
+            .rose {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gift-container" id="giftBox">
+        <div class="gift-box"></div>
+        <div class="gift-lid"></div>
+        <div class="ribbon"></div>
+    </div>
+    <button class="message-btn" onclick="showMessage()">Unni's Message</button>
+    <div class="message-overlay" id="messageOverlay">
+        <div>
+            <p>My friend told me a beautiful girl was coming to the school. I replied, 'So what?' and left. But the beautiful girl joined NSS. I saw her for the first time in NSS; she was very beautiful, and her nose ring (mukuti) was stunning.</p>
+            <p>One day, I drew her picture and gave it to her, but it wasn't exact. Another day, I drew another picture of her from Instagram and gave it to her; she liked that picture. One day, I proposed to her, giving her a rose and a picture. She took the rose and walked away. She replied online that she had no interest in love. For many months, I loved her and proposed to her on stage, but she rejected me, breaking my heart. Finally, many months later, she accepted my love.</p>
+            <button class="close-btn" onclick="closeMessage()">Close</button>
+        </div>
+    </div>
+    <button class="open-btn" onclick="openGift()">Open</button>
+    <div class="container" id="birthdayContainer">
+        <div class="photo photo1">
+            <img src="r1.jpg" alt="Rajalekshmi">
+        </div>
+        <div class="photo photo2">
+            <img src="r2.jpeg" alt="Rajalekshmi">
+        </div>
+        <div class="photo photo3">
+            <img src="r3.jpg" alt="Rajalekshmi">
+        </div>
+        <div class="photo photo4">
+            <img src="r4.jpg" alt="Rajalekshmi">
+        </div>
+        <div class="photo photo5">
+            <img src="r5.jpg" alt="Rajalekshmi">
+        </div>
+        <div class="song">
+            Our Song Lyrics
+            <audio controls>
+                <source src="tum.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        <img src="rose.jpg" alt="Rose" class="rose rose-left">
+        <img src="rose.jpg" alt="Rose" class="rose rose-right">
+    </div>
+    <script>
+        function showMessage() {
+            document.getElementById('messageOverlay').style.display = 'flex';
+        }
+
+        function closeMessage() {
+            document.getElementById('messageOverlay').style.display = 'none';
+        }
+
+        function openGift() {
+            document.getElementById('giftBox').classList.add('open');
+            setTimeout(() => {
+                document.getElementById('giftBox').style.display = 'none';
+                document.getElementById('birthdayContainer').style.display = 'grid';
+            }, 1000); // Delay before showing birthday page
+        }
+    </script>
+</body>
+</html>
